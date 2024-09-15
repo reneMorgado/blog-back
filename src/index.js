@@ -14,9 +14,11 @@ app.set('port', process.env.PORT);
 
 app.use(morgan('dev'));
 app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PATCH', 'DELETE']
-}));
+    origin: '*', // Permite solicitudes desde esta URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
+  }));
+  
 app.use(express.json({ limit: '500mb' }));
 app.use(express.urlencoded({ limit: '500mb', extended: true }));
 
