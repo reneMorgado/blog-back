@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
     try {
         const user = await getUser(email, email);
         if (user === null) return res.status(404).json({ message: "El usuario no existe" });
-        const isPasswordValid = await bcrypt.compare(password, user.encriptedPassword); // Assuming you store hashed passwords
+        const isPasswordValid = await bcrypt.compare(password, user.encriptedPassword);
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Credenciales inválidas" });
         }
